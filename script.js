@@ -45,3 +45,10 @@ function concatDigits(digit) {
         currentCalculation.textContent += digit;
     }
 }
+
+function reset(){
+    firstNumber = "";
+    secondNumber = "";
+    currentFunction = "";
+    currentCalculation.textContent = "0";
+}
