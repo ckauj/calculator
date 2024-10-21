@@ -68,6 +68,7 @@ function addDecimal() {
     } else {
         if (!secondNumber.includes('.')) {
             secondNumber += '.';
+            currentCalculation.textContent += '.';
         }
     }
 }
