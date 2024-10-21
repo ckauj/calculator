@@ -75,9 +75,11 @@ function addDecimal() {
 
 function deleteCharacter () {
     if (secondNumber !== "") {
-
+        secondNumber = secondNumber.slice(0, -1);
+        currentCalculation.textContent = currentCalculation.textContent.slice(0, -1);
     } else if (currentFunction !== "") {
-
+        currentFunction = "";
+        currentCalculation.textContent = currentCalculation.textContent.slice(0, -3);
     } else if (firstNumber !== "") {
         firstNumber = firstNumber.slice(0, -1);
         currentCalculation.textContent = currentCalculation.textContent.slice(0, -1);
