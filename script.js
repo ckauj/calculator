@@ -52,3 +52,22 @@ function reset(){
     currentFunction = "";
     currentCalculation.textContent = "0";
 }
+
+function addDecimal() {
+    if (firstNumber === "") {
+        firstNumber = '0.';
+        currentCalculation.textContent += '.';
+    } else if (currentFunction === "") {
+        if (!firstNumber.includes('.')) {
+            firstNumber += '.';
+            currentCalculation.textContent += '.';
+        }
+    } else if (secondNumber === "") {
+        secondNumber = '0.';
+        currentCalculation.textContent += '0.';
+    } else {
+        if (!secondNumber.includes('.')) {
+            secondNumber += '.';
+        }
+    }
+}
