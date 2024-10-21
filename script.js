@@ -32,3 +32,16 @@ for (const button of buttons) {
     });
 }
 
+function concatDigits(digit) {
+    if (firstNumber === "" && currentFunction === "") {
+        currentCalculation.textContent = digit;
+        firstNumber += digit;
+    } else {
+        if (currentFunction === "") {
+            firstNumber += digit;
+        } else {
+            secondNumber += digit;
+        }
+        currentCalculation.textContent += digit;
+    }
+}
