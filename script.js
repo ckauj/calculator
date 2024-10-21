@@ -94,6 +94,8 @@ function setFunction(fn) {
     const newFunction = document.querySelector(`#${fn}`);
     if (firstNumber === "" && currentFunction === "") {
         firstNumber = 0;
+    } else if (currentFunction !== "" && secondNumber === "") {
+        deleteCharacter();
     }
 
     calculate();
