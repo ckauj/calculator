@@ -71,3 +71,18 @@ function addDecimal() {
         }
     }
 }
+
+function deleteCharacter () {
+    if (secondNumber !== "") {
+
+    } else if (currentFunction !== "") {
+
+    } else if (firstNumber !== "") {
+        firstNumber = firstNumber.slice(0, -1);
+        currentCalculation.textContent = currentCalculation.textContent.slice(0, -1);
+    }
+
+    if (firstNumber === "") {
+        currentCalculation.textContent = '0';
+    }
+}
