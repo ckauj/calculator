@@ -86,3 +86,47 @@ function deleteCharacter () {
         currentCalculation.textContent = '0';
     }
 }
+
+function setFunction(fn) {
+    const newFunction = document.querySelector(`#${fn}`);
+    if (firstNumber === "" && currentFunction === "") {
+        firstNumber = 0;
+    }
+
+    calculate();
+    currentFunction = fn;
+    currentCalculation.textContent += ` ${newFunction.textContent} `;
+}
+
+function calculate() {
+    if (firstNumber === "" || secondNumber === "" || currentFunction === "") {
+        return;
+    }
+
+    let total = 0;
+    switch (currentFunction) {
+        case 'add':
+            total = +firstNumber + +secondNumber;
+            break;
+        case 'subtract':
+            total = +firstNumber - +secondNumber;
+            break;
+        case 'multiply':
+            total = +firstNumber * +secondNumber;
+            break;
+        case 'divide':
+            if (secondNumber === '0') {
+                currentCalculation.textContent = 'Cannot divide by 0';
+                firstNumber = "";
+                secondNumber = "";
+                currentFunction = "";
+            } else {
+                total = +firstNumber / +secondNumber;
+            }
+            break;
+    }
+
+    firstNumber = total;
+    secondNumber = "";
+    currentCalculation.textContent = total;
+}
