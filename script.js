@@ -1,8 +1,10 @@
 let firstNumber = "";
 let secondNumber = "";
 let currentFunction = "";
+let calculated = false;
 
 const currentCalculation = document.querySelector("#current-calculation");
+const previousCalculation = document.querySelector("#previous-calculation");
 
 const buttons = document.querySelectorAll("button");
 for (const button of buttons) {
@@ -33,7 +35,8 @@ for (const button of buttons) {
 }
 
 function concatDigits(digit) {
-    if (firstNumber === "" && currentFunction === "") {
+    if ((firstNumber === "" || calculated) && currentFunction === "") {
+        reset();
         currentCalculation.textContent = digit;
         firstNumber += digit;
     } else {
@@ -51,6 +54,8 @@ function reset(){
     secondNumber = "";
     currentFunction = "";
     currentCalculation.textContent = "0";
+    previousCalculation.textContent = "";
+    calculated = false;
 }
 
 function addDecimal() {
@@ -77,10 +82,7 @@ function deleteCharacter () {
     if (secondNumber !== "") {
         secondNumber = secondNumber.slice(0, -1);
         currentCalculation.textContent = currentCalculation.textContent.slice(0, -1);
-    } else if (currentFunction !== "") {
-        currentFunction = "";
-        currentCalculation.textContent = currentCalculation.textContent.slice(0, -3);
-    } else if (firstNumber !== "") {
+    } else if (firstNumber !== "" && currentFunction === "") {
         firstNumber = firstNumber.slice(0, -1);
         currentCalculation.textContent = currentCalculation.textContent.slice(0, -1);
     }
@@ -92,15 +94,18 @@ function deleteCharacter () {
 
 function setFunction(fn) {
     const newFunction = document.querySelector(`#${fn}`);
+
+    calculated = false;
     if (firstNumber === "" && currentFunction === "") {
         firstNumber = 0;
     } else if (currentFunction !== "" && secondNumber === "") {
-        deleteCharacter();
+        previousCalculation.textContent = previousCalculation.textContent.slice(0, -3);
     }
 
     calculate();
+    previousCalculation.textContent = `${firstNumber} ${newFunction.textContent} `;
+    currentCalculation.textContent = "";
     currentFunction = fn;
-    currentCalculation.textContent += ` ${newFunction.textContent} `;
 }
 
 function calculate() {
@@ -132,7 +137,9 @@ function calculate() {
     }
 
     firstNumber = total;
+    previousCalculation.textContent += secondNumber;
     secondNumber = "";
     currentFunction = "";
     currentCalculation.textContent = total;
+    calculated = true;
 }
