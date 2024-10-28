@@ -41,9 +41,17 @@ function concatDigits(digit) {
         firstNumber += digit;
     } else {
         if (currentFunction === "") {
-            firstNumber += digit;
+            if (firstNumber.length > 14) {
+                return;
+            } else {
+                firstNumber += digit;
+            }
         } else {
-            secondNumber += digit;
+            if (secondNumber.length > 14) {
+                return;
+            } else {
+                secondNumber += digit;
+            }
         }
         currentCalculation.textContent += digit;
     }
@@ -59,7 +67,8 @@ function reset(){
 }
 
 function addDecimal() {
-    if (firstNumber === "") {
+    if (firstNumber === "" || calculated) {
+        reset();
         firstNumber = '0.';
         currentCalculation.textContent += '.';
     } else if (currentFunction === "") {
@@ -135,8 +144,13 @@ function calculate() {
             break;
     }
 
+    total = parseFloat(total.toFixed(5))
+    if (total > 1e12){
+        total = total.toExponential(2);
+    }
+
     firstNumber = total;
-    previousCalculation.textContent += secondNumber;
+    previousCalculation.textContent += `${secondNumber} = `;
     secondNumber = "";
     currentFunction = "";
     currentCalculation.textContent = total;
