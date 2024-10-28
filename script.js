@@ -133,5 +133,6 @@ function calculate() {
 
     firstNumber = total;
     secondNumber = "";
+    currentFunction = "";
     currentCalculation.textContent = total;
 }
