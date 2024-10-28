@@ -126,10 +126,9 @@ function calculate() {
             break;
         case 'divide':
             if (secondNumber === '0') {
+                reset();
                 currentCalculation.textContent = 'Cannot divide by 0';
-                firstNumber = "";
-                secondNumber = "";
-                currentFunction = "";
+                return;
             } else {
                 total = +firstNumber / +secondNumber;
             }
