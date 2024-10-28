@@ -1,7 +1,7 @@
 let firstNumber = "";
 let secondNumber = "";
 let currentFunction = "";
-let calculated = false;
+let isCalculationDone = false;
 
 const currentCalculation = document.querySelector("#current-calculation");
 const previousCalculation = document.querySelector("#previous-calculation");
@@ -35,7 +35,7 @@ for (const button of buttons) {
 }
 
 function concatDigits(digit) {
-    if ((firstNumber === "" || calculated) && currentFunction === "") {
+    if ((firstNumber === "" || isCalculationDone) && currentFunction === "") {
         reset();
         currentCalculation.textContent = digit;
         firstNumber += digit;
@@ -63,11 +63,11 @@ function reset(){
     currentFunction = "";
     currentCalculation.textContent = "0";
     previousCalculation.textContent = "";
-    calculated = false;
+    isCalculationDone = false;
 }
 
 function addDecimal() {
-    if (firstNumber === "" || calculated) {
+    if (firstNumber === "" || isCalculationDone) {
         reset();
         firstNumber = '0.';
         currentCalculation.textContent += '.';
@@ -104,7 +104,7 @@ function deleteCharacter () {
 function setFunction(fn) {
     const newFunction = document.querySelector(`#${fn}`);
 
-    calculated = false;
+    isCalculationDone = false;
     if (firstNumber === "" && currentFunction === "") {
         firstNumber = 0;
     } else if (currentFunction !== "" && secondNumber === "") {
@@ -122,37 +122,37 @@ function calculate() {
         return;
     }
 
-    let total = 0;
+    let calculationResult = 0;
     switch (currentFunction) {
         case 'add':
-            total = +firstNumber + +secondNumber;
+            calculationResult = +firstNumber + +secondNumber;
             break;
         case 'subtract':
-            total = +firstNumber - +secondNumber;
+            calculationResult = +firstNumber - +secondNumber;
             break;
         case 'multiply':
-            total = +firstNumber * +secondNumber;
+            calculationResult = +firstNumber * +secondNumber;
             break;
         case 'divide':
-            if (secondNumber === '0') {
+            if (secondNumber === '0' || secondNumber === '0.') {
                 reset();
                 currentCalculation.textContent = 'Cannot divide by 0';
                 return;
             } else {
-                total = +firstNumber / +secondNumber;
+                calculationResult = +firstNumber / +secondNumber;
             }
             break;
     }
 
-    total = parseFloat(total.toFixed(5))
-    if (total > 1e12){
-        total = total.toExponential(2);
+    calculationResult = parseFloat(calculationResult.toFixed(5))
+    if (calculationResult > 1e12){
+        calculationResult = calculationResult.toExponential(2);
     }
 
-    firstNumber = total;
+    firstNumber = calculationResult;
     previousCalculation.textContent += `${secondNumber} = `;
     secondNumber = "";
     currentFunction = "";
-    currentCalculation.textContent = total;
-    calculated = true;
+    currentCalculation.textContent = calculationResult;
+    isCalculationDone = true;
 }
