@@ -8,6 +8,9 @@ body {
     color: darkgray;
 }
 
+#calculation-container span {
+    padding-right: 10px;
+}
 #calculation-container {
     display: flex;
     height: 80px;
