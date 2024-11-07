@@ -28,6 +28,9 @@ for (const button of buttons) {
                 case 'decimal':
                     addDecimal();
                     break;
+                case 'sign':
+                    changeSign();
+                    break;
             }
         }
 
@@ -155,4 +158,26 @@ function calculate() {
     currentFunction = "";
     currentCalculation.textContent = calculationResult;
     isCalculationDone = true;
+}
+
+function changeSign() {
+    if (!isCalculationDone) {
+        if (secondNumber !== "") {
+            if (!secondNumber.includes('-')) {
+                secondNumber = '-' + secondNumber;
+                currentCalculation.textContent = '-' + currentCalculation.textContent;
+            } else {
+                secondNumber = secondNumber.slice(1);
+                currentCalculation.textContent = currentCalculation.textContent.slice(1);
+            }
+        } else if (firstNumber!== "" && currentFunction === "") {
+            if (!firstNumber.includes('-')) {
+                firstNumber = '-' + firstNumber;
+                currentCalculation.textContent = '-' + currentCalculation.textContent;
+            } else {
+                firstNumber = firstNumber.slice(1);
+                currentCalculation.textContent = currentCalculation.textContent.slice(1);
+            }
+        }
+    }
 }
