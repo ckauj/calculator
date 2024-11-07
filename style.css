@@ -28,9 +28,15 @@ body {
     flex: 3;
 }
 
+.digit#zero {
+    flex-basis: 190px;
+}
+
 #button-container button {
     flex: 1 1 90px;
 }
+
+
 
 
 
