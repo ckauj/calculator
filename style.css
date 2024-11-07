@@ -30,6 +30,8 @@ body {
     height: 600px;
     border-radius: 15px;
     overflow: hidden;
+    padding: 5px;
+    background-color: black;
 }
 
 #button-container {
@@ -62,6 +64,10 @@ body {
 #decimal {
     background-color: grey;
     color: white;
+}
+
+#current-calculation {
+    font-size: 36px;
 }
 
 
