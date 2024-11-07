@@ -4,6 +4,10 @@ body {
     align-items: center;
 }
 
+#previous-calculation {
+    color: darkgray;
+}
+
 #calculation-container {
     display: flex;
     height: 80px;
@@ -11,6 +15,8 @@ body {
     flex-direction: column;
     align-items: end;
     justify-content: space-around;
+    background-color: black;
+    color: white;
 }
 
 #calculator-container {
@@ -19,6 +25,8 @@ body {
     border-style: solid;
     width: 400px;
     height: 600px;
+    border-radius: 15px;
+    overflow: hidden;
 }
 
 #button-container {
