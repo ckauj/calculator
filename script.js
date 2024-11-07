@@ -92,7 +92,7 @@ function addDecimal() {
 
 function deleteCharacter () {
     if (isCalculationDone) return;
-    
+
     if (secondNumber !== "") {
         secondNumber = secondNumber.slice(0, -1);
         currentCalculation.textContent = currentCalculation.textContent.slice(0, -1);
@@ -118,9 +118,7 @@ function setFunction(fn) {
 
     calculate();
 
-    if (firstNumber[firstNumber.length - 1] === '.') {
-        firstNumber = firstNumber.slice(0, -1);
-    }
+    firstNumber = parseFloat(firstNumber);
 
     previousCalculation.textContent = `${firstNumber} ${newFunction.textContent} `;
     currentCalculation.textContent = "";
@@ -132,9 +130,7 @@ function calculate() {
         return;
     }
 
-    if (secondNumber[secondNumber.length - 1] === '.') {
-        secondNumber = secondNumber.slice(0, -1);
-    }
+    secondNumber = parseFloat(secondNumber);
 
     let calculationResult = 0;
     switch (currentFunction) {
@@ -173,7 +169,7 @@ function calculate() {
 
 function changeSign() {
     if (!isCalculationDone) {
-        if (secondNumber !== "" && secondNumber !== '0' && secondNumber !== '0.') {
+        if (secondNumber!== "" && parseFloat(secondNumber) !== 0) {
             if (!secondNumber.includes('-')) {
                 secondNumber = '-' + secondNumber;
                 currentCalculation.textContent = '-' + currentCalculation.textContent;
@@ -181,7 +177,7 @@ function changeSign() {
                 secondNumber = secondNumber.slice(1);
                 currentCalculation.textContent = currentCalculation.textContent.slice(1);
             }
-        } else if (firstNumber!== "" && firstNumber !== '0' && firstNumber !== '0.' && currentFunction === "") {
+        } else if (firstNumber!== "" && currentFunction === "" && parseFloat(firstNumber) !== 0) {
             if (!firstNumber.includes('-')) {
                 firstNumber = '-' + firstNumber;
                 currentCalculation.textContent = '-' + currentCalculation.textContent;
