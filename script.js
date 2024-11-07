@@ -91,6 +91,8 @@ function addDecimal() {
 }
 
 function deleteCharacter () {
+    if (isCalculationDone) return;
+    
     if (secondNumber !== "") {
         secondNumber = secondNumber.slice(0, -1);
         currentCalculation.textContent = currentCalculation.textContent.slice(0, -1);
