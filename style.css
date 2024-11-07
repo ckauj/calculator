@@ -36,6 +36,23 @@ body {
     flex: 1 1 90px;
 }
 
+.option {
+    background-color: darkgray;
+    color: white;
+}
+
+.function,
+#equal {
+    background-color: orange;
+    color: white;
+}
+
+.digit,
+#decimal {
+    background-color: grey;
+    color: white;
+}
+
 
 
 
