@@ -23,28 +23,14 @@ body {
 
 #button-container {
     display: flex;
-    flex: 3;
-    flex-direction: row;
-}
-
-#digit-container {
-    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-}
-
-#function-container {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
+    flex: 3;
 }
 
 #button-container button {
-    flex: 1;
-}
-
-#digit-container button {
     flex: 1 1 90px;
 }
+
 
 
