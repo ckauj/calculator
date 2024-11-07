@@ -115,6 +115,11 @@ function setFunction(fn) {
     }
 
     calculate();
+
+    if (firstNumber[firstNumber.length - 1] === '.') {
+        firstNumber = firstNumber.slice(0, -1);
+    }
+
     previousCalculation.textContent = `${firstNumber} ${newFunction.textContent} `;
     currentCalculation.textContent = "";
     currentFunction = fn;
@@ -123,6 +128,10 @@ function setFunction(fn) {
 function calculate() {
     if (firstNumber === "" || secondNumber === "" || currentFunction === "") {
         return;
+    }
+
+    if (secondNumber[secondNumber.length - 1] === '.') {
+        secondNumber = secondNumber.slice(0, -1);
     }
 
     let calculationResult = 0;
