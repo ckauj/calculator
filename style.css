@@ -47,6 +47,7 @@ body {
 
 #button-container button {
     flex: 1 1 90px;
+    font-size: 36px;
 }
 
 .option {
