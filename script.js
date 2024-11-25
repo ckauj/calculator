@@ -118,6 +118,7 @@ function setFunction(fn) {
 
     calculate();
 
+    // remove trailing 0 and decimal
     firstNumber = parseFloat(firstNumber);
 
     previousCalculation.textContent = `${firstNumber} ${newFunction.textContent} `;
@@ -130,6 +131,7 @@ function calculate() {
         return;
     }
 
+    // remove trailing 0 and decimal
     secondNumber = parseFloat(secondNumber);
 
     let calculationResult = 0;
@@ -144,7 +146,7 @@ function calculate() {
             calculationResult = +firstNumber * +secondNumber;
             break;
         case 'divide':
-            if (secondNumber === '0' || secondNumber === '0.') {
+            if (parseFloat(secondNumber) === 0) {
                 reset();
                 currentCalculation.textContent = 'Cannot divide by 0';
                 return;
@@ -154,6 +156,8 @@ function calculate() {
             break;
     }
 
+    // round answer to 5 decimal places
+    // if greater than 1e12 convert to exponent to avoid overflow
     calculationResult = parseFloat(calculationResult.toFixed(5))
     if (calculationResult > 1e12){
         calculationResult = calculationResult.toExponential(2);
